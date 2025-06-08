@@ -49,3 +49,17 @@ nwr["tourism"](area)->.tourism;
 
 out geom;
 ```
+
+### Datasets (kyiv.csv, lviv.csv)
+
+- **type**: GeoJSON feature type (e.g., "Polygon").
+- **street**: Street name.
+- **amenity**: Public facilities (e.g., restaurant, school).
+- **craft**: Craft-related POIs (e.g., shoemaker).
+- **healthcare**: Medical facilities (e.g., hospital).
+- **historic**: Historical sites (e.g., monument).
+- **leisure**: Recreational areas (e.g., park).
+- **office**: Office types (e.g., lawyer).
+- **public_transport**: Transport infrastructure (e.g., stop_area, bus_stop).
+- **shop**: Retail types (e.g., bakery).
+- **tourism**: Tourist attractions (e.g., museum).
