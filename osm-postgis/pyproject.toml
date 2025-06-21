@@ -26,6 +26,9 @@ shapely = {version = "2.0.6", optional = false}
 
 psycopg2-binary = {version = "^2.9.9", optional = false}
 h3 = "^4.2.2"
+pyproj = "^3.7.1"
+sqlalchemy = "^2.0.41"
+geoalchemy2 = "^0.17.1"
 
 [tool.poetry.dev-dependencies]
 pre-commit = {version = "^4.0.0", optional = false}
