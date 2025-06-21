@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  postgis:
+    image: postgis/postgis:latest
+    container_name: postgis-docker
+    environment:
+      - POSTGRES_PASSWORD=postpass
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./scripts/initdb:/docker-entrypoint-initdb.d
+      - postgis-data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 12g
+          cpus: "4"
+    restart: unless-stopped
+    networks:
+      - postgis-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin-docker
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgis
+    restart: unless-stopped
+    networks:
+      - postgis-network
+
+volumes:
+  postgis-data:
+    driver: local
+  pgadmin-data:
+    driver: local
+
+networks:
+  postgis-network:
+    driver: bridge
