@@ -5,7 +5,7 @@ run_postgis_test_db_x86_64:
  	 		  -v ${HOME}/docker/volumes/postgis:/var/lib/postgresql/data postgis/postgis:latest
 
 run_postgis_test_db_arm64:
-	docker run --memory="12g" --cpus="4" --rm --name postgis-docker \
+	docker run --memory="12g" --cpus="8" --rm --name postgis-docker \
 		    -e POSTGRES_PASSWORD=postpass -d -p 5432:5432 \
 		    -v ./scripts/initdb:/docker-entrypoint-initdb.d \
 		    -v ${HOME}/docker/volumes/postgis:/var/lib/postgresql/data \
